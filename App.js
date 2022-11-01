@@ -1,20 +1,32 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import tw from 'twrnc';
+import * as React from 'react';
+import MapView, { PROVIDER_GOOGLE } from 'react-native-maps';
+import { StyleSheet, Text, View, Dimensions, SafeAreaView } from 'react-native';
+import { db } from './components/config';
+import { collection, getDocs } from 'firebase/firestore';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import HomePage from './screens/HomePage';
+import MapScreen from './screens/MapScreen';
+import RootNavigator from './navigator/RootNavigator';
+
+
 
 export default function App() {
+
+  // const markersRef = collection(db,"markers")
+  // const allMarkers = getDocs(markersRef)
+  // const allMarkersData = allMarkers.docs.map(doc => doc.data())
+
+  React.useEffect(()=>{console.log("You can do this")},[])
+
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+   <NavigationContainer>
+      <SafeAreaView style={tw`h-full flex-row align-center justify-center bg-green-400 text-center`}>
+        <RootNavigator />
+      </SafeAreaView>
+   </NavigationContainer>
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
