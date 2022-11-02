@@ -3,7 +3,6 @@ import tw from 'twrnc';
 import React from 'react'
 
 const HomePage = ({navigation}) => {
-  console.log(navigation)
   return (
    <>
         <TouchableOpacity 

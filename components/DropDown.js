@@ -1,11 +1,20 @@
 import { StyleSheet, Text, View } from 'react-native'
+import DropDownPicker from 'react-native-dropdown-picker';
+import tw from 'twrnc';
 import React from 'react'
 
-const DropDown = () => {
+const DropDown = ({
+  open,value,items,setOpen,setValue,setItems, focusText
+}) => {
   return (
-    <View>
-      <Text>DropDown</Text>
-    </View>
+      <DropDownPicker
+      open={open}
+      value={value}
+      items={items}
+      setOpen={setOpen}
+      setValue={setValue}
+      setItems={setItems}
+    />
   )
 }
 

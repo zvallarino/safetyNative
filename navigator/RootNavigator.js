@@ -16,7 +16,7 @@ function RootNavigator() {
         </RootStack.Group>
 
         <RootStack.Group screenOptions={{ presentation: 'modal' }}>
-            <RootStack.Screen name="MyModal" component={ModalScreen} />
+            <RootStack.Screen name="Event Form" component={ModalScreen} />
         </RootStack.Group>
     </RootStack.Navigator>
   )
