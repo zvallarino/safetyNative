@@ -6,7 +6,7 @@ const MapScreen = ({navigation}) => {
     <View>
       <Text>MapScreen</Text>
       <Button
-        onPress={() => navigation.navigate('MyModal')}
+        onPress={() => navigation.navigate('Event Form')}
         title="Open Modal"
       />
     </View>
