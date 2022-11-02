@@ -2,9 +2,9 @@ import React, { useEffect, useRef, useState } from 'react';
 import { View, TextInput, ScrollView } from 'react-native';
 import tw from 'twrnc';
 
-const TextBox = ({setTextFocus, focusText}) => {
+const TextBox = ({setTextFocus, focusText, textInput}) => {
 
-  const textInput = useRef("")
+  // const textInput = useRef("")
   const [currentBlock, setCurrentBlock] = useState("")
   const [tabType, setTabType] = useState("")
   const currentStyle = useRef("")

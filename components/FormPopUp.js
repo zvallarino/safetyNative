@@ -1,9 +1,12 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext, useRef, useState } from 'react'
 import DropDown from './DropDown'
 import tw from 'twrnc';
-import { Button, ScrollView, Text, TextInput, View } from 'react-native';
+import { Button, Keyboard, Pressable, ScrollView, Text, TextInput, TouchableWithoutFeedback, View } from 'react-native';
 import { StyleSheet } from 'react-native';
 import TextBox from './TextBox';
+import CustomButton from './CustomButton';
+import ButtonZ from './CustomButton';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 
 function FormPopUp() {
@@ -12,7 +15,9 @@ function FormPopUp() {
 
   const [openTime, setOpenTime] = useState(false);
   const [valueTime, setValueTime] = useState(null);
-  const [focusText, setTextFocus] = useState(false)
+  const [focusText, setTextFocus] = useState(false);
+  const textInput = useRef("")
+  const [buttonState, setButtonState] =useState(false)
   const [time, setTimes] = useState([
     {label: '-18', value: '-18'},
     {label: '19-25', value: '19-25'},
@@ -34,10 +39,15 @@ function FormPopUp() {
   ]);
 
 
+  const handlePress = () => {
+    setButtonState(!false)
+    console.log(textInput.current)
+  }
 
 
   return (
-    <ScrollView  style = {tw`bg-red-400 h-full`}>
+    <View 
+    style = {tw`bg-white h-full`}>
 
 
 <View
@@ -56,12 +66,20 @@ function FormPopUp() {
       <Text style = {tw`text-black border-y-2 bg-gray-100 text-center text-lg ${focusText && "hidden"}`}>Sex</Text>
       <View style={{ borderBottomColor: 'gray', borderBottomWidth: 2, }}/>
 
-        <View style = {tw`flex-row justify-center ${focusText && "hidden"}`}>
-            <Button 
-            onPress={(e)=>setTextFocus(false)}
-            title = "Male"></Button>
-            <Button title = "Female"></Button>
-        </View>
+       <View style = {tw`flex-row justify-evenly`}>
+          <Pressable 
+          style={tw`
+          border-2 border-gray-500 font-medium text-xs leading-tight uppercase rounded bg-gray-300 ${buttonState && "bg-blue-400"} h-10 w-30 items-center justify-center`} onPress={(e)=>Keyboard.dismiss()}>
+            <Text style = {tw`text-xl `}>Male</Text>
+          </Pressable>
+  
+          <Pressable style={tw`
+          border-2 border-gray-500 font-medium text-xs leading-tight uppercase rounded bg-gray-300 ${buttonState && "bg-blue-400"} h-10 w-30 items-center justify-center`} onPress={()=>setTextFocus(false)}>
+            <Text style = {tw`text-xl `}>Female</Text>
+          </Pressable>
+
+        </View> 
+     
 
       <View style={{ borderBottomColor: 'gray', borderBottomWidth: 2, }}/>
       <Text style = {tw`text-black border-y-2 bg-gray-100 text-center text-lg mb-1  ${focusText && "hidden"}`}>Age</Text>
@@ -110,6 +128,7 @@ function FormPopUp() {
       <Text style = {tw`text-black border-y-2 bg-gray-100 text-center text-lg `}>Additional Information</Text>
      <TextBox 
      focusText = {focusText}
+     textInput = {textInput}
      setTextFocus = {setTextFocus} 
      />
       
@@ -117,7 +136,7 @@ function FormPopUp() {
       <Button title = "Do Not Provide"></Button>
 
       <Button title = "Submit Report"></Button>
-    </ScrollView>
+    </View>
   )
 }
 
