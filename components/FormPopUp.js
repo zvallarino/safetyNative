@@ -1,4 +1,4 @@
-import React, { useContext, useRef, useState } from 'react'
+import React, { useContext, useEffect, useRef, useState } from 'react'
 import DropDown from './DropDown'
 import tw from 'twrnc';
 import { Button, Keyboard, Pressable, ScrollView, Text, TextInput, TouchableWithoutFeedback, View } from 'react-native';
@@ -11,7 +11,7 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 
 function FormPopUp() {
 
-  
+  useEffect(()=>console.log("Wow Looks Great! I cant believe you built this by yourself"))
 
   const [openTime, setOpenTime] = useState(false);
   const [valueTime, setValueTime] = useState(null);

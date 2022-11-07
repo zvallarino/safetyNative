@@ -3,7 +3,7 @@ import tw from 'twrnc';
 import * as React from 'react';
 import MapView, { PROVIDER_GOOGLE } from 'react-native-maps';
 import { StyleSheet, Text, View, Dimensions, SafeAreaView } from 'react-native';
-import { db } from './components/config';
+import { db } from './config';
 import { collection, getDocs } from 'firebase/firestore';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
@@ -23,7 +23,7 @@ export default function App() {
 
   return (
    <NavigationContainer>
-      <SafeAreaView style={tw`h-full flex-row align-center justify-center bg-green-400 text-center`}>
+      <SafeAreaView style={tw`h-full flex-row justify-center bg-green-400 text-center`}>
         <RootNavigator />
       </SafeAreaView>
    </NavigationContainer>
